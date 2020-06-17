@@ -16,7 +16,7 @@
 			box-sizing: border-box;
 		}
 		div.top {
-			background: #00218c;
+			background: #42AD23;
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -35,7 +35,7 @@
 		}
 		footer {
 			position: relative;
-			padding-top: 50;
+			padding-top: 100;
 			bottom: 0;
 			width: 100%;
 			text-align: center;
@@ -56,6 +56,9 @@
 				<p class="appname">
 					<a href="javascript:void(window.open('Login.jsp', 'new', 'width=400,height=800,status=no,scrollbars=yes,menubar=no,resizable=no,'))"><img src="images/start.png" style="max-width: 90%; height: auto;"></a>
 				</p>
+				<footer>
+					<img src="images/Logo.png" style="max-width: 20%;">
+				</footer>
 			</div>
 	</div>
 </body>

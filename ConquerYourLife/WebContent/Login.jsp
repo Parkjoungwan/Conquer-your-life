@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="user.UserDAO"%>
-<%@ page import="user.User"%>
+
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 <!DOCTYPE html>
@@ -20,7 +19,7 @@ body{
 
 
 div.top{
-	background: #00218c;
+	background: #42AD23;
     position: fixed;
 	top:0;
     left: 0;
@@ -42,13 +41,13 @@ div.login{
 	padding-top: 20%;
 	text-align: center;
 }
-footer{
-	position: relative; 
-	padding-top: 40;
-	bottom: 10; 
-	width: 100%;
-	text-align: center;
-	 }
+footer {
+			position: relative;
+			padding-top: 100;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+		}
 
 input{
 	z-index: 1;
@@ -70,14 +69,14 @@ input.id{
 
 input.pw{
 	top: 41%;
-	left: 55%;
+	left: 36%;
 	font-size: 100%;
 	width: 35%;
 	height: 7%;
 }
 
 input.login{
-	top: 65%;
+	top: 60%;
 	left: 55%;
 	font-size: 100%;
 	width: 35%;
@@ -89,7 +88,7 @@ input.login{
 }
 
 input.signup{
-	top: 78%;
+	top: 73%;
 	left: 55%;
 	font-size: 100%;
 	width: 35%;
@@ -119,19 +118,19 @@ input.signup{
 		%>
 	<div class="top"></div>
 	<p class="appname">
-		<img src="images/appname.png" style="max-width: 80%; height: auto;">
+		<img src="images/Title.png" style="max-width: 80%; height: auto;">
 	</p>
 	<div class="login">
-		<img src="images/idpw.png" style="max-width: 85%; height:auto;">
-		<form method="post" action="loginAction_d.jsp">
+		<img src="images/LoginJoinButton.png" style="max-width: 85%; height:auto;">
+		<form method="post" action="MapView.jsp">
 				<input class="id" type="text" class="form-control" name="userID" maxlength="20">
 				<input class="pw" type="password" class="form-control" name="userPassword" maxlength="20">
 				<input class="login" class="form-control" type="submit">
 		</form>
-		<a href="join_d.jsp"><input class="signup" type="button" name="signup"></a>
+		<a href="Join.jsp"><input class="signup" type="button" name="signup"></a>
 		<div></div>
 		<footer>
-			<img src="images/logo.png" style="max-width: 10%;">
+			<img src="images/Logo.png" style="max-width: 20%;">
 		</footer>
 	</div>
 </body>
