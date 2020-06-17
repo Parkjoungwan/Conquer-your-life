@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>지도이름</title>
+<title>국가생성</title>
 <meta http-equiv="Content-Type"
       charset="UTF-8" name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
 <style type="text/css">
@@ -93,16 +93,16 @@
 <body>
 <div class="top"></div>
 <p class="join">
-<img src="images/makenick.png" style="max-width: 80%; height: auto;" >
+<img src="images/NationAddTop.png" style="max-width: 80%; height: auto;" >
 </p>
 
 
-	<form method="post" action="MapView.jsp">
+	<form method="post" action="Nation.jsp">
 	<div class="login">
-		<input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="닉네임">
-		</select>
+		<input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="국가이름">
+		<input class="time" type="time" class="form-control" name="userID" maxlength="20" >
 	</div>
-		<input type="submit" class="signup" value="닉네임생성">
+		<input type="submit" class="signup" value="국가생성">
 	</form>
 
 

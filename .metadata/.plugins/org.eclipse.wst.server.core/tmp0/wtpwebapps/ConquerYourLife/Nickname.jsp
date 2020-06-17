@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>국가이름</title>
+<title>지도이름</title>
 <meta http-equiv="Content-Type"
       charset="UTF-8" name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
 <style type="text/css">

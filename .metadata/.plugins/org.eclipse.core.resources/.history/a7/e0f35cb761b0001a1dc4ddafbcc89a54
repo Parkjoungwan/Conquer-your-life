@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>지도이름</title>
+<title>국가생성</title>
 <meta http-equiv="Content-Type"
       charset="UTF-8" name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
 <style type="text/css">
@@ -99,10 +99,11 @@
 
 	<form method="post" action="MapView.jsp">
 	<div class="login">
-		<input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="닉네임">
+		<input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="국가이름">
+		<input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="국가시간 ex)1630,1830">
 		</select>
 	</div>
-		<input type="submit" class="signup" value="닉네임생성">
+		<input type="submit" class="signup" value="국가추가">
 	</form>
 
 

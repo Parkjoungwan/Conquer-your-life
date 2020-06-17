@@ -106,6 +106,7 @@ input.b25{
     <hr style="border: solid 2px #353c54; margin-top: 10;">
 			<div class="bottom_bar" style="padding-top:3%;">
 				<a href="MapView.jsp"><img src="images/Back.png" style="max-width: 10%;height: auto; padding-left:12% ;padding-top:2px;"></a>
+				<a href="NationAdd.jsp"><img src="images/NationAddButton.png" style="max-width: 10%;height: auto; padding-left:12% ;padding-top:2px;"></a>
 			</div>
 
 </body>
