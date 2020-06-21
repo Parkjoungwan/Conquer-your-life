@@ -42,7 +42,6 @@
 		}
 	</style>
 </head>
-</head>
 <body>
     <%
         String userID = null;
