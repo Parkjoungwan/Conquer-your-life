@@ -22,7 +22,6 @@
 			background-color: #FFFFFF;
 			box-sizing : border-box;
 			font-family: 'Lobster', cursive;
-			background-clip: ;
 		}
 		
 		div.logo {
@@ -54,7 +53,7 @@
 			width: 35%;
 			border:none;
 			height: 9%;
-		````font-family: 'Lobster', cursive;
+			font-family: 'Lobster', cursive;
 		}
 		
 		input.signup{
