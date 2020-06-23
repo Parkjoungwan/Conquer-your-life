@@ -7,6 +7,7 @@
 <html>
 <head>
 	<title>로그인</title>
+<<<<<<< HEAD
 	<meta http-equiv="Content-Type" charset="UTF-8" name=viewportcontent="width=device-width, initial-scale=1, user-scalable=0">
 	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 	
@@ -100,6 +101,98 @@
 			text-align: center;
 
 		}
+=======
+	<meta http-equiv="Content-Type" charset="UTF-8" name=viewport
+		content="width=device-width, initial-scale=1, user-scalable=0">
+	<style type="text/css">
+
+body{
+	margin: 0px auto;
+	background-color: #FFFFFF;
+	box-sizing : border-box;
+}
+
+
+div.top{
+	background: #42AD23;
+    position: fixed;
+	top:0;
+    left: 0;
+    right: 0;
+	box-sizing : border-box;
+    height: 70px;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+p.appname{
+	position: relative;
+	padding-top: 30%;
+	padding-left: 30%;
+
+}
+div.login{
+	position: relative;
+	padding-top: 20%;
+	text-align: center;
+}
+footer {
+			position: relative;
+			padding-top: 100;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+input{
+	z-index: 1;
+	position: absolute;
+	text-align: left;
+	position: absolute;
+	font-size: 100%;
+	border:none;
+
+}
+
+input.id{
+	top: 28%;
+	left: 36%;
+	font-size: 100%;
+	width: 35%;
+	height: 7%;
+}
+
+input.pw{
+	top: 41%;
+	left: 36%;
+	font-size: 100%;
+	width: 35%;
+	height: 7%;
+}
+
+input.login{
+	top: 60%;
+	left: 55%;
+	font-size: 100%;
+	width: 35%;
+	height: 9%;
+	border:none;
+	opacity: 0;
+
+
+}
+
+input.signup{
+	top: 73%;
+	left: 55%;
+	font-size: 100%;
+	width: 35%;
+	border:none;
+	height: 9%;
+	opacity: 0;
+
+}
+>>>>>>> 42e4fcea7d96af7a11053772ca35045067470811
 
 
 </style>
@@ -119,6 +212,7 @@
 			script.println("</script>");
 		}
 		%>
+<<<<<<< HEAD
 	<div>
 		<div class="app_name">
 					<img src="images/app_name_3.png" style="max-width: 90%; height: auto;">
@@ -137,6 +231,25 @@
 			</footer>
 	</div>
 	
+=======
+	<div class="top"></div>
+	<p class="appname">
+		<img src="images/Title.png" style="max-width: 80%; height: auto;">
+	</p>
+	<div class="login">
+		<img src="images/LoginJoinButton.png" style="max-width: 85%; height:auto;">
+		<form method="post" action="MapView.jsp">
+				<input class="id" type="text" class="form-control" name="userID" maxlength="20">
+				<input class="pw" type="password" class="form-control" name="userPassword" maxlength="20">
+				<input class="login" class="form-control" type="submit">
+		</form>
+		<a href="Join.jsp"><input class="signup" type="button" name="signup"></a>
+		<div></div>
+		<footer>
+			<img src="images/Logo.png" style="max-width: 20%;">
+		</footer>
+	</div>
+>>>>>>> 42e4fcea7d96af7a11053772ca35045067470811
 </body>
 
 </html>
