@@ -3,29 +3,78 @@ import java.sql.*;
 
 import org.json.simple.JSONObject;
 
-//import util.ConnectionPool;
+import util.ConnectionPool;
 
 public class UserDAO {
-	public String signup(String uid, String upass) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ConquerYourLife", "root", "1111");
-		Statement st = conn.createStatement();
+	public String login(String uid, String upass) throws Exception{
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
 		
-		String sql = "SELECT id FROM user WHERE id = '" + uid + "'";
-		String code = "OK";
-		ResultSet rs = st.executeQuery(sql);
-		if(rs.next()){
-			code = "EX";
-		}
-		else {
-			sql = "INSERT INTO user(id, password) VALUES(";
-			sql += "'" + uid + "', ";
-			sql += "'" + upass + "' ";
-			sql += ")";
+		try{
+			conn = ConnectionPool.getInstance().getConn();
+
+			String sql = "SELECT id FROM user WHERE id = ?";
+			st = conn.prepareStatement(sql);
+			st.setString(1, uid);
+
+			String code = "OK";
+			rs = st.executeQuery();
+
+			if(!rs.next()){
+				code = "NA";	//can't find UserData
+			}
+			else if(!rs.getString("password").equals(upass)){
+				code = "PS";	//wrong password
+			}
+			else {
+				JSONObject jsonobj = new JSONObject();
+				jsonobj.put("AccountIdx", rs.getString("AccountIdx"));
+				jsonobj.put("id", rs.getString("id"));
+				jsonobj.put("name", rs.getString("name"));
+				code = jsonobj.toJSONString();
+			} 
 			
-			int cnt  = st.executeUpdate(sql);
-			code = (cnt > 0) ? "OK" : "ER";			
+			return code;
 		}
-		return code;
+		finally{
+			if(rs != null) rs.close();
+			if(st != null) st.close();
+			if(conn != null) conn.close();
+		}
+	}
+	
+	public String signup(String uid, String upass) throws Exception {
+		
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try{
+			conn = ConnectionPool.getInstance().getConn();
+			
+			String sql = "SELECT id FROM user WHERE id = '"+ uid + "'";
+			st = conn.prepareStatement(sql);
+	
+			String code = "OK";
+			rs = st.executeQuery(sql);
+			if(rs.next()){
+				code = "EX";
+			}
+			else {
+				sql = "INSERT INTO user(id, password) VALUES(";
+				sql += "'" + uid + "', ";
+				sql += "'" + upass + "' ";
+				sql += ")";
+				
+				int cnt  = st.executeUpdate(sql);
+				code = (cnt > 0) ? "OK" : "ER";			
+			}
+			return code;
+		}
+		finally{
+			if(rs != null) rs.close();
+			if(st != null) st.close();
+			if(conn != null) conn.close();
+		}
 	}
 }
