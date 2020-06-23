@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;loginAction_d.jsp&apos; to &apos;WebContent&apos;&#x0D;&#x0A;- Original project: &apos;지난코드&apos;&#x0D;&#x0A;- Destination element: &apos;WebContent&apos;&#x0D;&#x0A;- Original element: &apos;loginAction_d.jsp&apos;" description="Copy file" element1="WebContent/loginAction_d.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1592367735749" target="/ConquerYourLife/WebContent" units="0" version="1.0"/>
-</session>
