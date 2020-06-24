@@ -37,6 +37,8 @@
             box-sizing: border-box;
         }
 
+
+
         ul li {
             display: flex;
             background: rgba(255, 255, 255, .5);
@@ -47,6 +49,19 @@
             border: 4px solid #98dfd8;
             margin-top: 5%;
             margin-left: 6%;
+            font-size: 1.5em;
+            padding: 2% 1% 1% 1%;
+        }
+
+        .day{
+            background: rgba(239, 250, 253, 0.993);
+            font-size: 100%;
+            text-align: center;
+            width: 50%;
+            height: 40%;
+            border: 4px solid #0acdf0;
+            margin-top: 5%;
+            margin-left: 20%;
             font-size: 1.5em;
             padding: 2% 1% 1% 1%;
         }
@@ -63,6 +78,10 @@
             width: 25%;
         }
 
+        .icon {
+            width: 10%;
+        }
+
         .top {
             text-align: center;
             font-size: 4em;
@@ -76,6 +95,9 @@
         }
 
         
+
+
+
     </style>
 </head>
 
@@ -84,10 +106,9 @@
     <p class="top">
         CYL
     </p>
-    <hr style="border: solid 2px #353c54; margin-top: 10;">
-    
+     
     <div class="map">
-        <img src="images/map_base.png" class="c11" style="max-width: 100%; height: auto; ">
+        <img src="images/map_base.png" style="max-width: 100%; height: auto; ">
 
         <img src="images/map/5_1_r.png" class="c22"style="max-width: 100%; height: auto; ">
         <img src="images/map/5_2_r.png" class="c22"style="max-width: 100%; height: auto; ">
@@ -99,23 +120,31 @@
         <img src="images/map/1_2_g.png" class="c22"style="max-width: 100%; height: auto; ">
         <img src="images/map/2_1_g.png" class="c22"style="max-width: 100%; height: auto; ">
         <img src="images/map/2_2_g.png" class="c22"style="max-width: 100%; height: auto; ">
-
+  
     </div>
+
+
     
 
+    <div>
+    <hr style="border: solid 2px #353c54; margin-top: 10;">
+ </div>
     <ul>
+        <li class="day">
+            4.19
+        </li>
         <li>
-            <span class="">1</span>
+            <input type="image" class="icon" src="images/flag_r.png">
             <span class="">6시 기상</span>
             <span class="">후퇴</span>
         </li>
         <li>
-            <span class="">2</span>
+            <input type="image" class="icon" src="images/flag_b.png">
             <span class="">운동</span>
             <span class="">이동</span>
         </li>
         <li>
-            <span class="">3</span>
+            <input type="image" class="icon" src="images/flag_b.png">
             <span class="">스트레칭</span>
             <span class="">전진</span>
     </ul>
