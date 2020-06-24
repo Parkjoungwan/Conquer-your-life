@@ -23,7 +23,44 @@
             text-align: center;
             float: left;
             padding-top: 0%;
+            position: relative;
 
+        }
+
+        
+        ul {
+            position: relative;
+            width: 100%;
+            height: 40;
+            margin: 3%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            display: flex;
+            background: rgba(255, 255, 255, .5);
+            font-size: 100%;
+            text-align: center;
+            width: 80%;
+            height: 40%;
+            border: 4px solid #98dfd8;
+            margin-top: 5%;
+            margin-left: 6%;
+            font-size: 1.5em;
+            padding: 2% 1% 1% 1%;
+        }
+
+        ul li span:nth-child(1) {
+            width: 15%;
+        }
+
+        ul li span:nth-child(2) {
+            width: 60%;
+        }
+
+        ul li span:nth-child(3) {
+            width: 25%;
         }
 
         .top {
@@ -31,6 +68,14 @@
             font-size: 4em;
             margin: 7% 0% 8% 0%;
         }
+
+        .c22{
+            position:absolute;
+            top:0;
+            left:0;
+        }
+
+        
     </style>
 </head>
 
@@ -40,9 +85,34 @@
         CYL
     </p>
     <hr style="border: solid 2px #353c54; margin-top: 10;">
+    
     <div class="map">
-        <img src="images/map5.png" style="max-width: 100%; height: auto; ">
+        <img src="images/map.png" class="c11" style="max-width: 100%; height: auto; ">
+
+        <img src="images/5x1.png" class="c22"style="max-width: 100%; height: auto; ">
+        <img src="images/5x2.png" class="c22"style="max-width: 100%; height: auto; ">
+
+        <img src="images/5x4.png" class="c22"style="max-width: 100%; height: auto; ">
+        <img src="images/5x5.png" class="c22"style="max-width: 100%; height: auto; ">
     </div>
+    
+
+    <ul>
+        <li>
+            <span class="">1</span>
+            <span class="">6시 기상</span>
+            <span class="">후퇴</span>
+        </li>
+        <li>
+            <span class="">2</span>
+            <span class="">운동</span>
+            <span class="">이동</span>
+        </li>
+        <li>
+            <span class="">3</span>
+            <span class="">스트레칭</span>
+            <span class="">전진</span>
+    </ul>
 
     <hr style="border: solid 2px #353c54; margin-top: 10;">
    
