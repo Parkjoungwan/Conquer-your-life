@@ -107,8 +107,48 @@
             border-style: double;
         }
 
+        input[type="checkbox"]{
+            display:none;
+            }
 
+        .click_box{
+            display:flex;
+        }
+        .check1 input[type="checkbox"] + label span{
+            display:inline-block;
+            width:1.5em;
+            height:1.5em;
+            border:0px;
+            margin-left: -20%;
+            margin-bottom: 0.4em;
+            vertical-align:middle;
+            background:url("images/check_1.png"); 
+            background-size:cover;
+            display: flex;
+        }
 
+        .check1 input[type="checkbox"]:checked + label span{
+            background:url("images/check_2.png"); 
+            background-size:cover;
+            display: flex;
+        }
+
+        .check2 input[type="checkbox"] + label span{
+            display:inline-block;
+            width:1.5em;
+            height:1.5em;
+            border:0px;
+            vertical-align:middle;
+            background:url("images/check_3.png"); 
+            background-size:cover;
+            margin-left: 10%;
+        }
+
+        .check2 input[type="checkbox"]:checked + label span{
+            background:url("images/check_4.png"); 
+            background-size:cover;
+            display: flex;
+        }
     </style>
 
 </head>
@@ -128,27 +168,60 @@
             <span class="c1"></span>
             <span>운동하기</span>
             <span>
-
-
-
-
-                <input type="image" class="icon" src="images/check_3.png">
+                <div class="click_box">
+                    <div class="check1">
+                        <input type="checkbox" id="img_checkbox">
+                            <label for="img_checkbox">
+                            <span></span> 
+                        </label>
+                    </div>
+                    <div class="check2">
+                        <input type="checkbox" id="img_checkbox2">
+                            <label for="img_checkbox2">
+                            <span></span> 
+                        </label>
+                    </div>
+                </div>
             </span>
         </li>
         <li>
             <span class="c2"></span>
             <span>스트레칭</span>
             <span>
-                <input type="image" class="icon" src="images/check_1.png">
-                <input type="image" class="icon" src="images/check_4.png">
+                <div class="click_box">
+                    <div class="check1">
+                        <input type="checkbox" id="img_checkbox">
+                            <label for="img_checkbox">
+                            <span></span> 
+                        </label>
+                    </div>
+                    <div class="check2">
+                        <input type="checkbox" id="img_checkbox2">
+                            <label for="img_checkbox2">
+                            <span></span> 
+                        </label>
+                    </div>
+                </div>
             </span>
         </li>
         <li>
             <span class="c3"></span>
             <span >독서</span>
-            <span >
-                <input type="image" class="icon" src="images/check_1.png">
-                <input type="image" class="icon" src="images/check_3.png">
+            <span>
+                <div class="click_box">
+                    <div class="check1">
+                        <input type="checkbox" id="img_checkbox">
+                            <label for="img_checkbox">
+                            <span></span> 
+                        </label>
+                    </div>
+                    <div class="check2">
+                        <input type="checkbox" id="img_checkbox2">
+                            <label for="img_checkbox2">
+                            <span></span> 
+                        </label>
+                    </div>
+                </div>
             </span>
         </li>
     </ul>

@@ -14,7 +14,10 @@ input[type="checkbox"]{
     display:none;
     }
 
-input[type="checkbox"] + label span{
+.click_box{
+    display:flex;
+}
+.c1 input[type="checkbox"] + label span{
   display:inline-block;
   width:50px;
   height:50px;
@@ -22,48 +25,59 @@ input[type="checkbox"] + label span{
   vertical-align:middle;
   background:url("images/check_1.png"); 
   background-size:cover;
+  display: flex;
 }
 
-input[type="checkbox"]:checked + label span{
+.c1 input[type="checkbox"]:checked + label span{
   background:url("images/check_2.png"); 
   background-size:cover;
+  display: flex;
 }
 
-input[type="checkbox1"]{
-    display:none;
-    }
-
-input[type="checkbox1"] + label span{
+.c2 input[type="checkbox"] + label span{
   display:inline-block;
   width:50px;
   height:50px;
   border:0px;
   vertical-align:middle;
-  background:url("images/check_1.png"); 
+  background:url("images/check_3.png"); 
   background-size:cover;
+  margin-left: 20%;
 }
 
-input[type="checkbox1"]:checked + label span{
-  background:url("images/check_2.png"); 
+.c2 input[type="checkbox"]:checked + label span{
+  background:url("images/check_4.png"); 
   background-size:cover;
+  display: flex;
 }
+
+
+
     
     </style>
 
 </head>
 
-<body>  <div>
-        <input type="checkbox" id="img_checkbox">
-        <label for="img_checkbox">
-          <span></span> 
-        </label>
-    </div>
-    <div>
-        <input type="checkbox1" id="img_checkbox">
-        <label for="img_checkbox">
-            <span></span> 
-          </label>
+<body>  
+    <div class="click_box">
+        <div class="c1">
+            <input type="checkbox" id="img_checkbox">
+                <label for="img_checkbox">
+                <span></span> 
+            </label>
         </div>
+        <div class="c2">
+            <input type="checkbox" id="img_checkbox2">
+                <label for="img_checkbox2">
+                <span></span> 
+            </label>
+        </div>
+    </div>
+
+    
+    
+
+
 </body>
 
 </html>
