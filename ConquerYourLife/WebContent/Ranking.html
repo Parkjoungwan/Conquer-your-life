@@ -60,17 +60,6 @@
 </head>
 
 <body>
-    <%
-        String userID = null;
-        if(session.getAttribute("userID")!=null){
-            userID = (String) session.getAttribute("userID");
-        }
-        int pageNumber =1;
-        if(request.getParameter("pageNumbe")!=null){
-        	pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-        }
-    %>
-
     <a href="MapView.jsp"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
 
     <p class="top">
