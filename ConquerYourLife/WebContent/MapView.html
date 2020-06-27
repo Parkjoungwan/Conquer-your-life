@@ -229,18 +229,16 @@ $(document).ready(function() {
 });
 
 var pagectx = {};
-function start(usrobj){
-	pagectx.usrobj = usrobj;
+var userobj;
+var country;
+function start(obj){
+	usrobj = obj;
+	Page.getcontry(fetch);
 
-	var params = "id=" + usrobj.id;
-	AJAX.call("jsp/feedFetch.jsp",params,function(data){
-		var feeds = JSON.parse(data.trim());
-		pagectx.feeds = feeds;
-		console.log(feeds);
-		
-		var list = feeds.concat(feedList);
-		generate(list);
-	});
+}
+
+function fetch(_country){
+	country = _country;	
 }
 
 function logout(){

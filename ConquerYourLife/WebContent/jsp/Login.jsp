@@ -19,7 +19,6 @@
 	
 	if(code != "NA" && code != "PS"){
 		session.setAttribute("usrobj", code);
-		session.setAttribute("country", code);
 	}
 	out.print(code);
 %>

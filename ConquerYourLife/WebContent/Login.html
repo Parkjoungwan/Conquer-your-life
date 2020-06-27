@@ -154,12 +154,11 @@ function login(){
 			alert("패스워드가 일치하지 않습니다.");
 		}
 		else {
-			var result = JSON.parse(data.trim());
 			alert("로그인이 완료되었습니다");
-			if(result.Country == "OK")
-				window.location.href = "MapView.html";
-			else
-				window.location.href = "NationAdd.html";
+			var data = JSON.parse(code);
+			alert(data.AccountIndex); 
+			var newurl = "jsp/checkCountry.jsp?id=" + data.AccountIndex; 
+			window.location.href = newurl;
 		}
 	});
 }

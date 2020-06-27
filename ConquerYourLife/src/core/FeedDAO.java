@@ -176,5 +176,39 @@ public class FeedDAO {
 		}
 	}
 
-	
+	public String getCountry(int uid) throws Exception{
+		Connection conn = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = ConnectionPool.getInstance().getConn();
+			
+			String sql = "SELECT CountryIndex, AccountIdx, Name FROM country WHERE AccountIdx = ?";
+			st = conn.prepareStatement(sql);
+			st.setInt(1, uid);
+
+			String code = "OK";
+			rs = st.executeQuery();
+
+			if(!rs.next()){
+				code = "NA";
+			}
+			else
+			{
+				JSONObject jsonobj = new JSONObject();
+				jsonobj.put("CountryIndex", rs.getString("CountryIndex"));
+				jsonobj.put("CountryName", rs.getString("Name"));
+				code = jsonobj.toJSONString(); 
+			}
+			
+			return code;
+		}
+		finally{
+			if(rs != null) rs.close();
+			if(st != null) st.close();
+			if(conn != null) conn.close();
+		}
+
+	}
 }

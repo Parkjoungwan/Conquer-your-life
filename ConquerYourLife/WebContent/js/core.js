@@ -26,7 +26,23 @@ var Page = {
 				cbfunc(usrobj);
 			});
 		},
-		
+		getcontry : function(cbfunc, url){
+			AJAX.call("jsp/country.jsp", null, function(data){
+				var ustr = data.trim();
+				if(ustr == "null"){
+					AJAX.call("jsp/session.jsp", null, function(data){
+						var ustr = data.trim();
+						var usrobj = JSON.parse(ustr);
+						window.location.href = "jsp/checkCountry.jsp?id=" + usrobj.AccountIndex;
+					});
+				}
+				else {
+					var usrobj = JSON.parse(ustr);
+					var param = (url == null) ? null : Session.get(url);
+					cbfunc(usrobj); 
+				}
+			});
+		},
 };
 
 var Session = {

@@ -60,9 +60,8 @@
 <script src="js/core.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-//	Page.init(start);
+	Page.init(start);
 });
-
 
 var pagectx = {};
 function start(usrobj){
@@ -79,5 +78,4 @@ function start(usrobj){
 	});
 }
 
-
-
+</script>

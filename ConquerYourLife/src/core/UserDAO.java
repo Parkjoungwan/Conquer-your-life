@@ -30,28 +30,13 @@ public class UserDAO {
 				code = "PS";	//wrong password
 				return code;
 			}
-			
-			String AccountIdx = rs.getString("AccountIdx");
-			JSONObject jsonobj = new JSONObject();
-			jsonobj.put("AccountIdx", AccountIdx);
-			jsonobj.put("id", rs.getString("id"));
-				
-			sql = "SELECT CountryIndex, AccountIdx, Name FROM country WHERE AccountIdx = ?";
-			st = conn.prepareStatement(sql);
-			st.setString(1, AccountIdx);
-
-			rs = st.executeQuery();
-
-			if(!rs.next()){
-				jsonobj.put("Country", "NA");
-			}
-			else
-			{
-				jsonobj.put("Country", "OK");
-				jsonobj.put("CountryIndex", rs.getString("CountryIndex"));
-				jsonobj.put("CountryName", rs.getString("Name"));
-			}
-			code = jsonobj.toJSONString(); 
+			else {
+				JSONObject jsonobj = new JSONObject();
+				jsonobj.put("id", rs.getString("id"));
+				jsonobj.put("AccountIndex", rs.getString("AccountIdx"));
+				code = jsonobj.toJSONString();
+			} 
+						
 			return code;
 		}
 		finally{
