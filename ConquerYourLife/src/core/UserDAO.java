@@ -23,17 +23,35 @@ public class UserDAO {
 
 			if(!rs.next()){
 				code = "NA";	//can't find UserData
+				return code;
 			}
-			else if(!rs.getString("password").equals(upass)){
-				code = "PS";	//wrong password
-			}
-			else {
-				JSONObject jsonobj = new JSONObject();
-				jsonobj.put("AccountIdx", rs.getString("AccountIdx"));
-				jsonobj.put("id", rs.getString("id"));
-				code = jsonobj.toJSONString();
-			} 
 			
+			if(!rs.getString("password").equals(upass)){
+				code = "PS";	//wrong password
+				return code;
+			}
+			
+			String AccountIdx = rs.getString("AccountIdx");
+			JSONObject jsonobj = new JSONObject();
+			jsonobj.put("AccountIdx", AccountIdx);
+			jsonobj.put("id", rs.getString("id"));
+				
+			sql = "SELECT CountryIndex, AccountIdx, Name FROM country WHERE AccountIdx = ?";
+			st = conn.prepareStatement(sql);
+			st.setString(1, AccountIdx);
+
+			rs = st.executeQuery();
+
+			if(!rs.next()){
+				jsonobj.put("Country", "NA");
+			}
+			else
+			{
+				jsonobj.put("Country", "OK");
+				jsonobj.put("CountryIndex", rs.getString("CountryIndex"));
+				jsonobj.put("CountryName", rs.getString("Name"));
+			}
+			code = jsonobj.toJSONString(); 
 			return code;
 		}
 		finally{

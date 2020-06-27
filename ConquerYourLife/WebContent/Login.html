@@ -154,8 +154,12 @@ function login(){
 			alert("패스워드가 일치하지 않습니다.");
 		}
 		else {
+			var result = JSON.parse(data.trim());
 			alert("로그인이 완료되었습니다");
-			window.location.href = "MapView.html";
+			if(result.Country == "OK")
+				window.location.href = "MapView.html";
+			else
+				window.location.href = "NationAdd.html";
 		}
 	});
 }

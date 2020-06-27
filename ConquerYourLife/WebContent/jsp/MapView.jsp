@@ -48,10 +48,36 @@
         
 			<hr style="border: solid 2px #353c54; margin-top: 10;">
 			<div class="bottom_bar" style="padding-top:0%; padding-bottom:2%">
-				<a href="Nation.jsp"><img src="images/nation.png" style="max-width: 10%;height: auto; padding-left:10% ;padding-top:2px;"></a>
-				<a href="Check.jsp"><img src="images/check.png" style="max-width:10%; height: auto; padding-left: 14%;padding-top:3px;"></a>
-				<a href="History.jsp"><img src="images/history.png" style="max-width: 10%; height: auto;padding-left: 12%;"></a>
-				<a href="Ranking.jsp"><img src="images/ranking.png" style="max-width: 10%; height: auto;padding-left: 12%;"></a>
+				<a href="Nation.html"><img src="images/nation.png" style="max-width: 10%;height: auto; padding-left:10% ;padding-top:2px;"></a>
+				<a href="Check.html"><img src="images/check.png" style="max-width:10%; height: auto; padding-left: 14%;padding-top:3px;"></a>
+				<a href="History.html"><img src="images/history.png" style="max-width: 10%; height: auto;padding-left: 12%;"></a>
+				<a href="Ranking.html"><img src="images/ranking.png" style="max-width: 10%; height: auto;padding-left: 12%;"></a>
 			</div>
 	</body>
 </html>
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+//	Page.init(start);
+});
+
+
+var pagectx = {};
+function start(usrobj){
+	pagectx.usrobj = usrobj;
+
+	var params = "id=" + usrobj.id;
+	AJAX.call("jsp/feedFetch.jsp",params,function(data){
+		var feeds = JSON.parse(data.trim());
+		pagectx.feeds = feeds;
+		console.log(feeds);
+		
+		var list = feeds.concat(feedList);
+		generate(list);
+	});
+}
+
+
+
