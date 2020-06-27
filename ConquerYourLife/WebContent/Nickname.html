@@ -82,13 +82,50 @@
         <img src="images/logo_3.gif" style="max-width: 50%; height: auto;">
     </div>
 
-    <form method="post" action="MapView.jsp">
         <div class="">
-            <input class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="대륙 이름을 정해주세요.">
+            <input id="Name"class="id" type="text" class="form-control" name="userID" maxlength="20" placeholder="대륙 이름을 정해주세요.">
             </select>
         </div>
-        <input type="submit" class="signup" value="닉네임생성">
-    </form>
+        <input type="submit" class="signup" value="닉네임생성" onclick = "NickName()">
 </body>
 
 </html>
+
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Page.init(start);
+});
+
+var usrobj;
+function start(obj){
+	usrobj = obj;
+}
+
+function NickName(){
+	var Name = $("#Name").val().trim();
+	if(Name ==""){
+		alert("국가이름를 입력해주세요");
+		$("#Name").focus();
+		return ;
+	}
+
+	var url = "jsp/Nickname.jsp?Idx=" + usrobj.AccountIndex + "&Name=" + Name;
+	AJAX.call(url, null, function(data) {
+		var code = data.trim();
+		console.log(code);
+		if(code == "EX"){
+			alert("이미 국가가 있는 유저입니다.");
+		}
+		else if(code == "ER"){
+			alert("뭔가 문제가 생겼습니다.");
+		}
+		else{
+			alert("추가 완료되었습니다");
+			window.location.href = "MapView.html";
+		}
+	});
+}
+</script>

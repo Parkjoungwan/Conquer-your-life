@@ -15,7 +15,7 @@
 	String code = dao.getCountry(Integer.parseInt(uid));
 	
 	if(code == "NA"){
-		response.sendRedirect("../NationAdd.html");
+		response.sendRedirect("../Nickname.html");
 	}
 	else {
 		session.setAttribute("country", code);

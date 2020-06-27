@@ -80,6 +80,7 @@
 </body>
 </html>
 
+
 <script src="js/jquery-1.12.0.min.js"></script>
 <script src="js/core.js"></script>
 <script type="text/javascript">
@@ -93,27 +94,6 @@ function start(obj){
 }
 
 function NationAdd(){
-	var Name = $("#Name").val().trim();
-	if(Name ==""){
-		alert("국가이름를 입력해주세요");
-		$("#Name").focus();
-		return ;
-	}
-
-	var url = "jsp/addNation.jsp?Idx=" + usrobj.AccountIdx + "&Name=" + Name;
-	AJAX.call(url, null, function(data) {
-		var code = data.trim();
-		console.log(code);
-		if(code == "EX"){
-			alert("이미 국가가 있는 유저입니다.");
-		}
-		else if(code == "ER"){
-			alert("뭔가 문제가 생겼습니다.");
-		}
-		else{
-			alert("추가 완료되었습니다");
-			window.location.href = "MapView.html";
-		}
-	});
+	
 }
 </script>

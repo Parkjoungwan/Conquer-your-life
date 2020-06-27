@@ -116,7 +116,7 @@ public class FeedDAO {
 		}
 	}
 	
-	public String AddNation(String uid, String Name) throws Exception{
+	public String NickName(String uid, String Name) throws Exception{
 		Connection conn = null;
 		PreparedStatement st = null;
 		ResultSet rs = null;
