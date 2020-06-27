@@ -110,12 +110,10 @@
         </div>
         <div class="login">
             <img src="images/LoginJoinButton.png" style="max-width: 85%; height:auto;">
-            <form method="post" action="MapView.jsp">
-                <input class="id" type="text" class="form-control" name="userID" maxlength="20">
-                <input class="pw" type="password" class="form-control" name="userPassword" maxlength="20">
-                <input class="login" class="form-control" type="submit" value="Login">
-            </form>
-            <a href="Join.jsp"><input class="signup" type="button" name="signup" value="Join"></a>
+                <input id="id" type="text" class = "id" class="form-control" maxlength="20">
+                <input id="pw" type="password" class = "pw" class="form-control" maxlength="20">
+                <input class= "login" class="form-control" type="submit" value="Login" onclick="login()">
+            <a href="Join.html"><input class="signup" type="button" name="signup" value="Join"></a>
         </div>
         <footer>
             <img src="images/logo_3.gif" style="max-width: 20%;">
@@ -125,3 +123,40 @@
 </body>
 
 </html>
+
+
+<script src ="js/jquery-1.12.0.min.js"></script>
+<script src = "js/core.js"></script>
+<script>
+function login(){
+	var id = $("#id").val().trim();
+	if(id ==""){
+		alert("이메일 주소를 입력해주세요");
+		$("#id").focus();
+		return ;
+	}
+
+	var pw = $("#pw").val().trim();
+	if(pw==""){
+		alert("패스워드를 입력해주세요");
+		$("#pw").focus();
+		return ;
+	}
+
+	var url = "jsp/Login.jsp?id=" + id + "&pw=" + pw;
+	AJAX.call(url, null, function(data) {
+		var code = data.trim();
+		console.log(code);
+		if(code == "NA"){
+			alert("회원 정보를 찾을 수 없습니다.");
+		}
+		else if(code == "PS"){
+			alert("패스워드가 일치하지 않습니다.");
+		}
+		else {
+			alert("로그인이 완료되었습니다");
+			window.location.href = "MapView.html";
+		}
+	});
+}
+</script>

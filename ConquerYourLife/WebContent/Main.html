@@ -80,12 +80,27 @@
         </div>
 
         <div class="start">
-            <a href="Login.jsp">
-                <button class="button1">START</button>
-            </a>
+                <button class="button1" onclick= "Enter()">START</button>
         </div>
     </div>
 
 </body>
 
 </html>
+
+<script src ="js/jquery-1.12.0.min.js"></script>
+<script src = "js/core.js"></script>
+<script>
+function Enter(){
+	Page.getUsrobj(callback);
+}
+
+function callback(usrobj){
+	if(usrobj == null){
+		window.location.href ="Login.html";
+	}
+	else{
+		window.location.href = "MapView.html";
+	}
+}
+</script>

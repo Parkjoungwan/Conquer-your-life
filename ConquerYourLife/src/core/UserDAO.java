@@ -14,7 +14,7 @@ public class UserDAO {
 		try{
 			conn = ConnectionPool.getInstance().getConn();
 
-			String sql = "SELECT id FROM user WHERE id = ?";
+			String sql = "SELECT id, password, AccountIdx FROM user WHERE id = ?";
 			st = conn.prepareStatement(sql);
 			st.setString(1, uid);
 
@@ -31,7 +31,6 @@ public class UserDAO {
 				JSONObject jsonobj = new JSONObject();
 				jsonobj.put("AccountIdx", rs.getString("AccountIdx"));
 				jsonobj.put("id", rs.getString("id"));
-				jsonobj.put("name", rs.getString("name"));
 				code = jsonobj.toJSONString();
 			} 
 			
