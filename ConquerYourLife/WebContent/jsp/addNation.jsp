@@ -5,10 +5,7 @@
 
 	FeedDAO dao = new FeedDAO();
 
-	String code = dao.AddNation(request.getParameter("Idx"), request.getParameter("Name"));
-	
-	if(code != "EX" && code != "ER"){
-		session.setAttribute("country", code);
-	}
+	String code = dao.insertFeed(request.getParameter("Idx"),request.getParameter("Location"), request.getParameter("Name"));
+
 	out.print(code);
 %>

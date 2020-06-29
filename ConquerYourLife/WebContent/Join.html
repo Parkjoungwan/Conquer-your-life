@@ -69,13 +69,11 @@
             <img src="images/logo_3.gif" style="max-width: 50%; height: auto;">
         </div>
 
-        <form method="post" action="jsp/signup.jsp">
             <div class="">
                 <input id="id" type="text" class="form-control" maxlength="20" placeholder=" Id">
                 <input id="pw" type="password" class="form-control" maxlength="20" placeholder=" Pw">
             </div>
-            <input type="submit" class="signup" value="회원가입">
-        </form>
+            <input type="submit" class="signup" onclick="Join()" value="회원가입">
     </div>
 
 </body>
@@ -97,11 +95,11 @@ function Join(){
 	var ps = $("#pw").val().trim();
 	if(ps==""){
 		alert("패스워드를 입력해주세요");
-		$("#ps").focus();
+		$("#pw").focus();
 		return ;
 	}
 	
-	var url = "jsp/signup.jsp?id=" + id + "&pw=" + pw;
+	var url = "jsp/signup.jsp?id=" + id + "&pw=" + ps;
 	AJAX.call(url, null, function(data) {
 		var code = data.trim();
 		if(code == "EX"){
@@ -111,14 +109,8 @@ function Join(){
 			alert("회원가입 중 에러가 발생하였습니다.");
 		}
 		else{
-			var result = JSON.parse(code);
-			
 			alert("회원가입이 완료되었습니다.");
-			if(result.author.Country == "NA")
-				window.location.href = "NationAdd.html";
-			else{
-				window.location.href = "MapView.html";
-			}
+			window.location.href = "Login.html";
 		}	
 	});
 }

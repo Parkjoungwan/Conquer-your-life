@@ -89,11 +89,42 @@ $(document).ready(function() {
 });
 
 var usrobj;
+var countryobj;
 function start(obj){
 	usrobj = obj;
+	Page.getcontry(func);
+	console.log(Session.get("NationAdd.html"));
+}
+
+function func(obj){
+	countryobj = obj;
 }
 
 function NationAdd(){
+	var Name = $("#Name").val().trim();
+	if(Name ==""){
+		alert("습관이름를 입력해주세요");
+		$("#Name").focus();
+		return ;
+	}
 	
+	var content = Session.get("NationAdd.html");
+	
+	var url = "jsp/addNation.jsp?Idx=" + countryobj.CountryIndex + "&Location=" +content + "&Name=" + Name;
+	AJAX.call(url, null, function(data) {
+		var code = data.trim();
+		console.log(code);
+		if(code == "EX"){
+			alert("이미 국가가 있는 유저입니다.");
+		}
+		else if(code == "ER"){
+			alert("뭔가 문제가 생겼습니다.");
+		}
+		else{
+			alert("추가 완료되었습니다");
+			window.location.href = "Nation.html";
+		}
+	});
 }
+
 </script>

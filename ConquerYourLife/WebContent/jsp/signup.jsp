@@ -7,8 +7,5 @@
 	
 	String code = dao.signup(request.getParameter("id"), request.getParameter("pw"));
 	
-	if(code != "NA" && code != "PS"){
-		session.setAttribute("country", code);
-	}
 	out.print(code);
 %>

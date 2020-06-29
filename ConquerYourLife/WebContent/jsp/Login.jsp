@@ -6,7 +6,7 @@
 	String sid = (String) session.getAttribute("usrobj");
 	if(sid != null)
 	{
-		out.print("이미 로그인 하셨습니다.");
+		out.print(sid);
 		return ;
 	}
 

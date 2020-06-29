@@ -78,72 +78,79 @@
 
 <body>
 
-    <a href="MapView.jsp"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
+    <a href="MapView.html"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
 
     <p class="top">
         History
     </p>
 
-    <ul>
-
-        <li>
-            <span class="">4월</span>
-            <span class="c1">운동하기</span>
-            <span class=""></span>
-            <span class="c3">독서</span>
-        </li>
-        <li>
-            <span class="">5월</span>
-            <span class="c1"></span>
-            <span class="c2">스트레칭</span>
-            <span class="c3"></span>
-        <li>
-            <span class="">6월</span>
-            <span class="c1"></span>
-            <span class="c2"></span>
-            <span class=""></span>
-        </li>
-        <li>
-            <span class="">7월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-
-        </li>
-        <li>
-            <span class="">8월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-        </li>
-        <li>
-            <span class="">9월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-        </li>
-        <li>
-            <span class="">10월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-        </li>
-        <li>
-            <span class="">11월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-        </li>
-        <li>
-            <span class="">12월</span>
-            <span class=""></span>
-            <span class=""></span>
-            <span class=""></span>
-        </li>
-
-
-    </ul>
+    
+	<div id="contents-area" class="section">
+	</div>
 
 </body>
 
 </html>
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Page.init(start);
+});
+
+var pagectx = {};
+var usrobj;
+var countryobj;
+
+function country(obj){
+	countryobj = obj;
+
+	var params = "idx=" + countryobj.CountryIndex;
+	AJAX.call("jsp/History.jsp",params,function(data){
+		var feeds = JSON.parse(data.trim());
+		pagectx.feeds = feeds;
+		generate(feeds);
+	});
+}
+
+function start(usrobj){
+	pagectx.usrobj = usrobj;
+	Page.getcontry(country);
+}
+
+function generate(list){
+	var str = "<ul> ";
+
+    str += "<li>";
+    str += "<span>제목</span>";
+    str += "<span>시작 날짜</span>";
+    str += "<span>마지막체크 날짜</span>";
+    str += "</li>";
+	for (var i=0; i<list.length; i++) {
+		str += getFeedStr(list[i]);
+	}
+	str += "</ul>";
+	$("#contents-area").html(str);
+}
+
+function getFeedStr(feed){
+	var str = "";
+
+    str += "<li>";
+    str += "<span>"+ feed.Name + "</span>";
+    str += "<span>" + feed.StartDate + "</span>";
+    /*
+    var b = new Date("2020-06-21");
+    var c = new Date(feed.LastUpdate);
+    if(c.getTime() >= b.getTime())
+	    str += "<span>" + feed.LastUpdate + "</span>";
+	else
+	    str += "<span> - </span>";
+	*/    	
+    str += "<span>" + feed.LastUpdate + "</span>";
+    str += "</li>";
+	return str;
+}
+
+</script>

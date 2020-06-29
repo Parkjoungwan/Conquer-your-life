@@ -4,5 +4,5 @@
 	request.setCharacterEncoding("UTF-8");
 
 	FeedDAO dao = new FeedDAO();
-	out.print(dao.fetchHistory(request.getParameter("idx")));
+	out.print(dao.updateDailyFeed(request.getParameter("no")));
 %>

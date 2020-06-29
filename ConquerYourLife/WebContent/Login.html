@@ -156,7 +156,6 @@ function login(){
 		else {
 			alert("로그인이 완료되었습니다");
 			var data = JSON.parse(code);
-			alert(data.AccountIndex); 
 			var newurl = "jsp/checkCountry.jsp?id=" + data.AccountIndex; 
 			window.location.href = newurl;
 		}

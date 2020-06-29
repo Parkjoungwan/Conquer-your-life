@@ -59,12 +59,11 @@
 <body>
 <div>
     <div class="start">
-        <button class="button1" onclick = "logout()">Log Out</button>
+        <button class="button1" onclick = "logout()" >Log Out</button>
     </div>
    
-
     <p class="top">
-        CYL
+        ConquerYourLife
     </p>
 
     <hr style="border: solid 2px #353c54; margin-top: 10;">
@@ -106,7 +105,7 @@ function fetch(_country){
 }
 
 function logout(){
-	var res = confirm("로그하웃 하시겠습니까?");
+	var res = confirm("로그아웃 하시겠습니까?");
 	if(res == true)
 	{
 		AJAX.call("jsp/logout.jsp", null, function(data){

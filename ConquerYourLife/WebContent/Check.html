@@ -154,7 +154,7 @@
 </head>
 
 <body>
-    <a href="MapView.jsp"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
+    <a href="MapView.html"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
 
 
 
@@ -163,71 +163,11 @@
     </p>
 
     
-    <ul>
-        <li>
-            <span class="c1"></span>
-            <span>운동하기</span>
-            <span>
-                <div class="click_box">
-                    <div class="check1">
-                        <input type="checkbox" id="img_checkbox">
-                            <label for="img_checkbox">
-                            <span></span> 
-                        </label>
-                    </div>
-                    <div class="check2">
-                        <input type="checkbox" id="img_checkbox2">
-                            <label for="img_checkbox2">
-                            <span></span> 
-                        </label>
-                    </div>
-                </div>
-            </span>
-        </li>
-        <li>
-            <span class="c2"></span>
-            <span>스트레칭</span>
-            <span>
-                <div class="click_box">
-                    <div class="check1">
-                        <input type="checkbox" id="img_checkbox">
-                            <label for="img_checkbox">
-                            <span></span> 
-                        </label>
-                    </div>
-                    <div class="check2">
-                        <input type="checkbox" id="img_checkbox2">
-                            <label for="img_checkbox2">
-                            <span></span> 
-                        </label>
-                    </div>
-                </div>
-            </span>
-        </li>
-        <li>
-            <span class="c3"></span>
-            <span >독서</span>
-            <span>
-                <div class="click_box">
-                    <div class="check1">
-                        <input type="checkbox" id="img_checkbox">
-                            <label for="img_checkbox">
-                            <span></span> 
-                        </label>
-                    </div>
-                    <div class="check2">
-                        <input type="checkbox" id="img_checkbox2">
-                            <label for="img_checkbox2">
-                            <span></span> 
-                        </label>
-                    </div>
-                </div>
-            </span>
-        </li>
-    </ul>
+	<div id="contents-area" class="section">
+	</div>
 
     <div class="start">
-        <a href="Mapview.jsp">
+        <a href="MapView.html">
             <button class="button1">확인</button>
         </a>
     </div>
@@ -240,9 +180,135 @@
 
 </html>
 
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Page.init(start);
+});
 
+var pagectx = {};
+var usrobj;
+var countryobj;
 
+function country(obj){
+	countryobj = obj;
 
+	console.log(countryobj);
+	var params = "idx=" + countryobj.CountryIndex;
+	AJAX.call("jsp/feedFetch.jsp",params,function(data){
+		//console.log(data.trim());
+		var feeds = JSON.parse(data.trim());
+		pagectx.feeds = feeds;
+		//console.log(feeds);
+		
+		generate(feeds);
+	});
+}
 
+function start(usrobj){
+	pagectx.usrobj = usrobj;
+	Page.getcontry(country);
+}
 
+function generate(list){
+	var str = "<ul> ";
+	for (var i=0; i<list.length; i++) {
+		str += getFeedStr(list[i]);
+		console.log(list[i]);
+	}
+	str += "</ul>";
+	$("#contents-area").html(str);
+}
 
+function getFeedStr(feed){
+	var str = "";
+
+    str += "<li>";
+    str += " <span class='c" + feed.Location +"'></span>";
+    str += "<span>" + feed.Name + "</span>";
+    str += "<span>";
+    str += "<div class='check1'>"; 
+    console.log(Date());
+    var c = new Date(feed.LastUpdate);
+    var b = new Date();
+    if(feed.LastUpdate.substr(8,2)!= b.getDate())
+ 	   str += "<input type='image' class='icon' src='images/check.png' onclick='Update("+ feed.FeedIdx +")'>";
+ 	else 
+ 	   str += "<input type='image' class='icon' src='images/check_2.png'>";
+    str += "</div>";
+    str += "</div>";
+    str += "</span>";
+    str += "</li>";
+    
+	return str;
+}
+
+function Update(feedNo){
+
+	var params = "no=" + feedNo;
+	AJAX.call("jsp/feedUpdate.jsp", params, function(data){
+		window.location.href = "Check.html";
+	});
+}
+
+function logout(){
+	var res = confirm("로그아웃 하시겠습니까?");
+	if(res == true)
+	{
+		AJAX.call("jsp/logout.jsp", null, function(data){
+			window.location.href = "login.html";
+		});
+	}
+}
+
+function deleteFeed(feedNo){
+	var res = confirm("선택하신 글을 삭제하시겠습니까?");
+	if(res == true)
+	{
+		var params = "no=" + feedNo;
+		AJAX.call("jsp/feedDelete.jsp", params, function(data){
+			window.location.replace("Nation.html");
+		});
+	}
+}
+
+function updateFeed(feedNo) {
+	var feed = null;
+	for(var i = 0; i < pagectx.feeds.length; i++){
+		if(pagectx.feeds[i].no != null && pagectx.feeds[i].no == feedNo){
+			feed = pagectx.feeds[i];
+			break;
+		}
+	}
+	if(feed == null){
+		alert("선택된 피드가 없습니다.");
+		return ;
+	}
+	Page.go("feedUpdate.html", feed);
+}
+
+function addFeed() {
+	var num = [ 0 , 0 , 0 , 0, 0];
+	if(pagectx.feeds.length > 3)
+		alert("습관이 가득 찼습니다");
+	else{
+		for(var i = 0; i < pagectx.feeds.length; i++){
+			num[parseInt(pagectx.feeds[i].Location)] = 1;
+		}
+		for(var i = 1; i < 5; i++)
+		{
+			if(num[i] == 0)
+			{
+				Page.go("NationAdd.html", i);
+				break;
+			}
+		}
+	}
+}
+
+function showFeed(index) {
+	window.location.href = "feed-" + index  + ".html";
+}
+
+</script>

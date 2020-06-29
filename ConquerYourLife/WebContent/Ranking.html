@@ -60,35 +60,70 @@
 </head>
 
 <body>
-    <a href="MapView.jsp"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
+    <a href="MapView.html"><img src="images/Back_1.png" style="max-width: 10%;height: auto; padding: 4% 3% 3% 5%;"></a>
 
     <p class="top">
         Ranking
     </p>
 
 
-    <div>
-        <ul>
-            <li>
-                <span>1</span>
-                <span>코딩삼</span>
-            </li>
-            <li>
-                <span>2</span>
-                <span>삼형제</span>
-            </li>
-            <li>
-                <span>3</span>
-                <span>형제들</span>
-            </li>
-            <li class="bin">
-            </li>
-            <li>
-                <span>10</span>
-                <span>들판</span>
-            </li>
-        </ul>
-    </div>
+    
+	<div id="contents-area" class="section">
+	</div>
+    
 </body>
 
 </html>
+
+
+<script src="js/jquery-1.12.0.min.js"></script>
+<script src="js/core.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	Page.init(start);
+});
+
+var pagectx = {};
+var usrobj;
+var countryobj;
+
+function country(obj){
+	countryobj = obj;
+
+	console.log(countryobj);
+	AJAX.call("jsp/Ranking.jsp",null,function(data){
+		//console.log(data.trim());
+		var feeds = JSON.parse(data.trim());
+		pagectx.feeds = feeds;
+		console.log(feeds);
+		
+		generate(feeds);
+	});
+}
+
+function start(usrobj){
+	pagectx.usrobj = usrobj;
+	Page.getcontry(country);
+}
+
+function generate(list){
+	var str = "<ul> ";
+	for (var i=0; i<list.length; i++) {
+		str += getFeedStr(list[i], i+1);
+		console.log(list[i]);
+	}
+	str += "</ul>";
+	$("#contents-area").html(str);
+}
+
+function getFeedStr(feed, no){
+	var str = "";
+
+    str += "<li>";
+    str += "<span>"+ no + "</span>";
+    str += "<span>" + feed.Name + "</span>";
+    str += "</li>";
+	return str;
+}
+
+</script>
